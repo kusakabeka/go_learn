@@ -3,19 +3,26 @@ package main
 import (
 	"errors"
 	"fmt"
+	"log"
 )
 
 func main() {
-	var name string
-	var age int
-	fmt.Scan(&name, &age)
-	message := sayHello(name, age)
+	// var name string
+	var age byte
+	fmt.Scan(&age)
+	//message := sayHello(name, age)
 
-	printMessage(message)
+	//printMessage(message)
 
 	// 	message1, _ := enterTheClub(19) -> _ будет проигнорированно
-	message1, entered := enterTheClub(19)
-	fmt.Println(message1, entered)
+	message1, err := enterTheClub(age)
+	if err != nil {
+		//log.Fatal(err) // выведет ошибку и закончит выполнение программы
+		log.Print(err)
+		// тк main ничего не возвращает, то мы просто выйдем из функции
+	}
+	fmt.Println(message1)
+
 }
 
 func printMessage(message string) {
