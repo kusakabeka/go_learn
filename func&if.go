@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -25,12 +26,12 @@ func sayHello(name string, age int) string {
 	return fmt.Sprintf("Hi, %s! You are %d years old!", name, age)
 }
 
-func enterTheClub(age byte) (string, bool) {
-	if age >= 18 {
-		return "Welcome, but carefully", true
+func enterTheClub(age byte) (string, error) {
+	if age >= 18 && age < 45 {
+		return "Welcome, but carefully", nil
 	} else if age >= 45 {
-		return "You're old"
+		return "You're too old", nil
 	}
-	return "You are not 18 years old!", false
+	return "You are not 18 years old!", errors.New("are you too young")
 
 }
