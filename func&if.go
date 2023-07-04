@@ -28,7 +28,9 @@ func sayHello(name string, age int) string {
 func enterTheClub(age byte) (string, bool) {
 	if age >= 18 {
 		return "Welcome, but carefully", true
-	} else {
-		return "You are not 18 years old!", false
+	} else if age >= 45 {
+		return "You're old"
 	}
+	return "You are not 18 years old!", false
+
 }
