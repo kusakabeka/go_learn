@@ -20,6 +20,7 @@ func main() {
 		//log.Fatal(err) // выведет ошибку и закончит выполнение программы
 		log.Print(err)
 		// тк main ничего не возвращает, то мы просто выйдем из функции
+		return
 	}
 	fmt.Println(message1)
 
