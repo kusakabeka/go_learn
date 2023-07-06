@@ -13,7 +13,7 @@ func main() {
 	}
 	fmt.Println(message)
 
-	fmt.Println(findMinOrMax("min", 1, 22, 34, 51, 25))
+	fmt.Println(findMinOrMax("max", 1, 22, 34, 51, 25))
 }
 func prediction(dayOfWeek string) (string, error) {
 	switch dayOfWeek {
@@ -30,23 +30,25 @@ func prediction(dayOfWeek string) (string, error) {
 	}
 }
 func findMinOrMax(word string, numbers ...int) int {
+
+	min := numbers[0]
+	max := numbers[0]
+
 	if word == "min" || word == "Min" || word == "MIN" {
 		if len(numbers) == 0 {
 			return 0
 		}
-		min := numbers[0]
 
 		for _, i := range numbers {
 			if i < min {
 				min = i
 			}
 		}
-		return min
+
 	} else if word == "max" || word == "Max" || word == "MAX" {
 		if len(numbers) == 0 {
 			return 0
 		}
-		max := numbers[0]
 
 		for _, i := range numbers {
 			if i > max {
@@ -55,5 +57,8 @@ func findMinOrMax(word string, numbers ...int) int {
 		}
 		return max
 	}
-	return 0
+	if word == "min" || word == "Min" || word == "MIN" {
+		return min
+	}
+	return max
 }
