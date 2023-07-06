@@ -1,20 +1,29 @@
 package main
 
+import (
+	"errors"
+	"fmt"
+)
+
 func main() {
-
+	message, err := prediction("пт")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(message)
 }
-
-func prediction(dayOfWeek string) string {
+func prediction(dayOfWeek string) (string, error) {
 	switch dayOfWeek {
 	case "пн":
-		return ""
+		return "01", nil
 	case "вт":
-		return ""
+		return "02", nil
 	case "ср":
-		return ""
+		return "03", nil
 	case "чт":
-		return "н"
+		return "04", nil
 	default:
-		return "невалидный день недели"
+		return "невалидный день недели", errors.New("invalid day of the week")
 	}
 }
