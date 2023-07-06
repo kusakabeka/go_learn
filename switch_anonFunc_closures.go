@@ -14,7 +14,31 @@ func main() {
 	fmt.Println(message)
 
 	fmt.Println(findMinOrMax("max", 1, 22, 34, 51, 25))
+
+	func() {
+		fmt.Println("anon func")
+	}()
+	// closures
+	inc := increment()                      // inc - func(), не int
+	fmt.Println(inc(), inc(), inc(), inc()) // 1 2 3 4
+
+	fmt.Println(increment2(), increment2(), increment2(), increment2()) // 1 1 1 1
 }
+
+func increment() func() int {
+	count := 0
+	return func() int {
+		count++
+		return count
+	}
+}
+
+func increment2() int {
+	count := 0
+	count++
+	return count
+}
+
 func prediction(dayOfWeek string) (string, error) {
 	switch dayOfWeek {
 	case "пн":
