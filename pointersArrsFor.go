@@ -65,6 +65,17 @@ func main() {
 	fmt.Println("cap:", cap(sl1))
 	sl1[0] = "1"
 	fmt.Println(sl1)
+
+	// двумерные
+	matrix := make([][]int, 10)
+
+	for x := 0; x < 10; x++ {
+		for y := 0; y < 10; y++ {
+			matrix[y] = make([]int, 10)
+			matrix[y][x] = x
+		}
+		fmt.Println(matrix[x])
+	}
 }
 
 // здесь передаем ссылку на sl
