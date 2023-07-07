@@ -76,6 +76,21 @@ func main() {
 		}
 		fmt.Println(matrix[x])
 	}
+	// for для работы со слайсами
+	msg1 := []string{"message 1", "message 2", "message 3", "message 4"}
+	for index, value := range msg1 {
+		fmt.Println(" index: ", index, "\n", "value: ", value)
+	}
+
+	// break
+	counter := 0
+	for {
+		if counter == 100 {
+			break
+		}
+		counter++
+		fmt.Println(counter)
+	}
 }
 
 // здесь передаем ссылку на sl
