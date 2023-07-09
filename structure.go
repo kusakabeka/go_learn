@@ -10,6 +10,16 @@ type User struct {
 	height int
 }
 
+// -- метод структыры -- (данные просто копируются)
+func (u User) printUserInfo() {
+	fmt.Println(u.name, u.age, u.sex, u.weight, u.height)
+}
+
+func (u *User) printUserInfoWithPointer(name string) {
+	u.name = name
+	fmt.Println(u.name, u.age, u.sex, u.weight, u.height)
+}
+
 type DumbDatabase struct {
 	m map[string]string
 }
@@ -20,7 +30,7 @@ func NewDumbDatabase() *DumbDatabase {
 	}
 }
 
-// конструстор
+// -- конструстор --
 func NewUser(name, sex string, age, weight, height int) User {
 	return User{
 		name:   name,
@@ -44,13 +54,20 @@ func main() {
 	user3 := User{"anna", 27, "Female", 75, 176}
 	user4 := NewUser("fedot", "male", 123, 31, 144)
 
+	user1.printUserInfo()
+	user2.printUserInfo()
+	user3.printUserInfo()
+	user4.printUserInfo()
+
+	//fmt.Println(user1.name)
+
+	user1.printUserInfoWithPointer("Oleg")
 	fmt.Println(user1)
-	fmt.Println(user2)
-	fmt.Println(user3)
-	fmt.Println(user4)
-	fmt.Println(user1.name)
+
 }
 
+/* -- просто функция --
 func printUserInfo(user User) {
-
+	fmt.Println(user.name, user.age, user.sex, user.weight, user.height)
 }
+*/
