@@ -19,5 +19,4 @@ func main() {
 	for key, value := range users {
 		fmt.Println(key, value)
 	}
-
 }
