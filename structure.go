@@ -2,22 +2,37 @@ package main
 
 import "fmt"
 
+type Age int
+
+func (a Age) isAdult() bool {
+	return a >= 18
+}
+
 type User struct {
 	name   string
-	age    int
+	age    Age
 	sex    string
 	weight int
 	height int
 }
+
+/* -- просто функция --
+func printUserInfo(user User) {
+	fmt.Println(user.name, user.age, user.sex, user.weight, user.height)
+}
+*/
 
 // -- метод структыры -- (данные просто копируются)
 func (u User) printUserInfo() {
 	fmt.Println(u.name, u.age, u.sex, u.weight, u.height)
 }
 
-func (u *User) printUserInfoWithPointer(name string) {
+func (u *User) SetName(name string) {
 	u.name = name
-	fmt.Println(u.name, u.age, u.sex, u.weight, u.height)
+}
+
+func (u User) GetName() string {
+	return u.name
 }
 
 type DumbDatabase struct {
@@ -34,7 +49,7 @@ func NewDumbDatabase() *DumbDatabase {
 func NewUser(name, sex string, age, weight, height int) User {
 	return User{
 		name:   name,
-		age:    age,
+		age:    Age(age),
 		sex:    sex,
 		weight: weight,
 		height: height,
@@ -60,14 +75,10 @@ func main() {
 	user4.printUserInfo()
 
 	//fmt.Println(user1.name)
+	user1.SetName("Sergey")
+	fmt.Println(user1.GetName())
+	fmt.Println(user2.GetName())
 
-	user1.printUserInfoWithPointer("Oleg")
-	fmt.Println(user1)
+	fmt.Println(user1.age.isAdult())
 
 }
-
-/* -- просто функция --
-func printUserInfo(user User) {
-	fmt.Println(user.name, user.age, user.sex, user.weight, user.height)
-}
-*/
