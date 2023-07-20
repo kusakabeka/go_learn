@@ -54,14 +54,14 @@ import (
 func main() {
 	square_1 := shape.NewSquare(5)
 	// не работает, так как sideLen c маленькой буквы => !public
-	square := shape.Square{5}
-	circle := shape.Circle{8}
-
-	printShapeArea(square)
-	printShapeArea(circle)
-
-	printInterface(square)
-	printInterface(circle)
+	// square := shape.Square{5}
+	// circle := shape.Circle{8}
+	fmt.Println(square_1)
+	//printShapeArea(square)
+	//printShapeArea(circle)
+	//
+	//printInterface(square)
+	//printInterface(circle)
 	printInterface("qwe")
 	printInterface(22)
 	printInterface(true)
