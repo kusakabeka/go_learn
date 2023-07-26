@@ -3,6 +3,10 @@ package main
 import "fmt"
 
 func main() {
+
+}
+
+func slices() {
 	// arr => [n]t{values ...}; n = size, t - type
 	// например, UUID:258d5bc0-d6c1-489a-b933-e3486ff772b9 -> 16 bytes
 
@@ -46,7 +50,9 @@ func main() {
 		=> Будет создан новый базовый массив и в большинстве случаев
 		 его длинна в 2 раза больше изначального.
 	*/
+}
 
+func zeroSliceValue() {
 	// НУЛЕВОЕ ЗНАЧЕНИЕ СЛАЙСА
 
 	var list []int
@@ -57,13 +63,31 @@ func main() {
 	fmt.Println("без len:", list == nil) // => false, создали переменную list типа slice и проинициализировали ее, пусть и пустую, то есть какое-то значение у нее уже есть
 	fmt.Println("через len:", len(list) == 0)
 	// !лучше делать через LEN()!
+}
 
+func allocationOfMemoryForSlice() {
 	// АЛЛОКАЦИЯ ПАМЯТИ ДЛЯ СЛАЙСА
 	sl := make([]int, 5, 10)
 	fmt.Println(len(sl), cap(sl))
 
 	sl_test := []int{1, 2, 3, 4, 8}
 	fmt.Println(double(sl_test))
+
+}
+
+func passingASliceByValue() {
+	// ПЕРЕДАЧА СЛАЙСА ПО ЗНАЧЕНИЮ
+	sample_slice := []int{1, 2, 3, 4}
+	fmt.Println("before:", sample_slice[:1])
+	handle(sample_slice)
+	fmt.Println("after:", sample_slice)
+
+}
+
+func handle(list []int) {
+	//list[1] = 123
+	_ = append(list, 5)
+	fmt.Println("append:", list)
 }
 
 func double(nums []int) []int {
