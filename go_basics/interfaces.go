@@ -65,7 +65,6 @@ func main() {
 	printInterface("qwe")
 	printInterface(22)
 	printInterface(true)
-
 	printInter2("wewqewqeqwewqeqeqwe")
 	printInter2(23)
 }
@@ -74,6 +73,19 @@ func printShapeArea(s shape.Shape) {
 	fmt.Println(s.Area())
 	fmt.Println(s.Perimetr())
 
+}
+
+func printInterface2(inter interface{}) {
+	switch value := inter.(type) {
+	case string:
+		fmt.Println(value)
+	case int:
+		fmt.Println(value)
+	case bool:
+		fmt.Println(value)
+	default:
+		fmt.Println("unknown type", value)
+	}
 }
 
 // пустой интерфейс
