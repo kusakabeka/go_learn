@@ -1,5 +1,8 @@
-package archiver
+package main
+
+import "archiver/cmd"
 
 func main() {
-	// cmd.Execute()
+	//archiver pack vlc <path_to_file> -out /path/to/packed-file
+	cmd.Execute()
 }
