@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-
+	passingASliceByValue()
 }
 
 func slices() {
@@ -78,15 +78,16 @@ func allocationOfMemoryForSlice() {
 func passingASliceByValue() {
 	// ПЕРЕДАЧА СЛАЙСА ПО ЗНАЧЕНИЮ
 	sample_slice := []int{1, 2, 3, 4}
-	fmt.Println("before:", sample_slice[:1])
-	handle(sample_slice)
+	fmt.Println("before:", sample_slice)
+	handle(sample_slice[:1])
 	fmt.Println("after:", sample_slice)
 
 }
 
 func handle(list []int) {
-	//list[1] = 123
-	_ = append(list, 5)
+	// [1, 5], 3, 4
+	// len = 2
+	list = append(list, 5)
 	fmt.Println("append:", list)
 }
 
